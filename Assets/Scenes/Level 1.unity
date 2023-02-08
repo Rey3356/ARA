@@ -8579,6 +8579,7 @@ MonoBehaviour:
   interactor: {fileID: 464309754}
   doorframe: {fileID: 853239596}
   locked_pan: {fileID: 1821819365}
+  listener: {fileID: 1137837101}
   shake_curve:
     serializedVersion: 2
     m_Curve:

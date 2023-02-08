@@ -10,9 +10,11 @@ public class touchInteraction : MonoBehaviour
     [SerializeField] GameObject interactor;
     [SerializeField] GameObject doorframe;
     [SerializeField] GameObject locked_pan;
+    [SerializeField] GameObject listener;
     public AnimationCurve shake_curve;
     public float duration = 1f;
     bool start;
+    bool cleared;
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class touchInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cleared = listener.GetComponent<Pass_listen>().level_Cleared;
         if(Canvas.activeSelf == false)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -40,7 +43,7 @@ public class touchInteraction : MonoBehaviour
                     interactor.SetActive(true);
                 }
 
-                if (hitInfo.collider?.tag == "door" && Canvas.activeSelf == false)
+                if (hitInfo.collider?.tag == "door" && Canvas.activeSelf == false && cleared == false)
                 {
                     start = true;
                     if (start == true)
